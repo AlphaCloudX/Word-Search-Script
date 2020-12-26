@@ -62,7 +62,7 @@ for waysToFind in range(4):
                 wordBeingSearched.append(board[lengthOfBoard][i:len(wordToFind[words]) + i])
 
                 if reversee:
-                    wordBeingSearched == reverse(wordBeingSearched)
+                    wordBeingSearched = reverse(wordBeingSearched)
 
                 if len(wordBeingSearched[0]) == len(wordToFind[words]):
 
