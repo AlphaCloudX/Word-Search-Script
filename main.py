@@ -134,12 +134,9 @@ for waysToFind in range(7):
                     # Check if the word in the list is equal to the word to be found
                     if wordBeingSearched[0] == wordToFind[words]:
 
-                        # Appending Possitions No need to reverse list as we have coordinates and are able to be interchanged
+                        # Appending Positions No need to reverse list as we have coordinates and are able to be interchanged
                         print("Found At: XY " + str(position[lengthOfBoard][i:i+len(wordBeingSearched[0])]))
                         t.append(position[lengthOfBoard][i:i+len(wordBeingSearched[0])])
-
-                        # Print message when found
-                        # print(str(wordToFind[words]) + str(" is found at Coordinate XY: ") + str(position[lengthOfBoard][i:i+len(wordBeingSearched[0])]))
 
                         # Appending To Final List
                         finalList.append([wordToFind[words], str(" Coordinate: ") + str(t[0])])
