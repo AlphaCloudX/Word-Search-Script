@@ -85,10 +85,10 @@ for waysToFind in range(4):
                     pass
 
 print()
-print("Basic Check Complete")
+print("Basic Check Complete, Starting Diagonal Search")
 print()
-print(finalList)
-# Basic Methods
+
+#Diagonal Search, just a modified version from above just adjusted to work
 for waysToFind in range(7):
 
     # Regular diagonal
@@ -103,32 +103,48 @@ for waysToFind in range(7):
     if waysToFind == 6: position = methodThree(array)[1]; board = methodThree(array)[0]; reversee = True; print("Top Right to Bottom left | Right Half")
     if waysToFind == 7: position = methodFour(array)[1]; board = methodFour(array)[0]; reversee = True; print("Top Right to Bottom Left | Left Half")
 
+    # Main Loop
+    # Checking Amount Of Words | ['abc', 'def] = 2
     for words in range(len(wordToFind)):
 
+        # Amount of rows
         for lengthOfBoard in range(len(board)):
 
+            # Checking Every row
             for i in range(len(board[lengthOfBoard])):
+                # Setting and Resetting the temporary Lists
+                # WordBeingSearched is the segment of the full string that is being searched
 
                 wordBeingSearched = []
                 t = []
 
+                # List+i to check if it is the same i(position of check) + i(add extra so i != len(wordToFind))
                 wordBeingSearched.append(board[lengthOfBoard][i:len(wordToFind[words]) + i])
 
+                # if the Word is reversed we reverse it back and find the postion
                 if reversee:
                     wordBeingSearched = reverse(wordBeingSearched)
 
+                # Don't Run at the end if the word is longer than the ending
                 if len(wordBeingSearched[0]) == len(wordToFind[words]):
 
+                    # Showing What Combination it is on
                     print("Checking Combination: " + str(wordBeingSearched))
 
+                    # Check if the word in the list is equal to the word to be found
                     if wordBeingSearched[0] == wordToFind[words]:
 
-                        t.append(position[lengthOfBoard][i:i + len(wordBeingSearched[0])])
+                        # Appending Possitions No need to reverse list as we have coordinates and are able to be interchanged
+                        print("Found At: XY " + str(position[lengthOfBoard][i:i+len(wordBeingSearched[0])]))
+                        t.append(position[lengthOfBoard][i:i+len(wordBeingSearched[0])])
 
-                        print(str(wordToFind[words]) + str(" is found at XY: ") + str(position[lengthOfBoard][i:i + len(wordBeingSearched[0])]))
+                        # Print message when found
+                        # print(str(wordToFind[words]) + str(" is found at Coordinate XY: ") + str(position[lengthOfBoard][i:i+len(wordBeingSearched[0])]))
 
-                        finalList.append([wordToFind[words], str("Coordinates: ") + str(t[0])])
+                        # Appending To Final List
+                        finalList.append([wordToFind[words], str(" Coordinate: ") + str(t[0])])
                 else:
+                    # Skip and go to ending
                     pass
 
 print()
